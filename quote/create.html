@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="./css/style.css">
+
+    <script defer src="./js/script.js"></script>
+    <title>Quote</title>
+</head>
+<body>
+    <!--HEADER-->
+    <aside class="sidebar">
+        <img src="./img/logoquote.png" class="sidebar_logo">
+        <nav class="sidebar_nav">
+            <a href="home.html" class="sidebar_item">
+                <i data-lucide="house"></i>
+                Home
+            </a>
+            <a href="search.html" class="sidebar_item">
+                <i data-lucide="search"></i>
+                Search
+            </a>
+            <a href="chat.html" class="sidebar_item">
+                <i data-lucide="message-circle"></i>
+                Chat
+            </a>
+            <a href="#" class="sidebar_item sidebar_item--active">
+                <i class="icon--active"data-lucide="circle-plus"></i>
+                Create
+            </a>
+            <a href="settings.html" class="sidebar_item">
+                <i data-lucide="settings"></i>
+                Settings
+            </a>
+        </nav>
+        <div class="sidebar_profile">
+            <a href="profile.html" class="sidebar_logout">
+                <i data-lucide="user-round-pen"></i>
+                <span class="profile_@">
+                @muriloooootc
+                </span>
+            </a>
+            <a href="logout.html" class="sidebar_logout">
+                <i data-lucide="log-out"></i>
+                Log-out
+            </a>
+        </div>
+
+
+    </aside>
+    <main id="editor">
+        <header class="header_create">
+        <div class="inputsheadercreate">
+                <input type="text" class="header_where" placeholder=" De onde é a citação?(opcional)" maxlength="100">
+                <input type="text" class="header_autor" placeholder=" Quem disse?" maxlength="80">
+        </div>
+            <div class="header_user">
+            </div>
+        </header>
+        <!--SIDEBAR-->
+        
+        <main class="feed_create">
+            
+            <div class="create">
+                <img src="img/logoquote.png" class="marca_dagua" alt="" maxlength="400">
+                <textarea class="create_text" placeholder=" Escreva sua citação aqui..." maxlength="2000"></textarea>
+                <span class="contador">0/2000</span>
+                
+            </div>
+        <footer class="footer_create">
+            <div class="cores">
+                <button class="cor" style="--cor: #5B9BD5" data-cor="#5B9BD5" title="Azul"></button>
+                <button class="cor" style="--cor: #65B96E" data-cor="#65B96E" title="Verde"></button>
+                <button class="cor" style="--cor: #E9A23B" data-cor="#E9A23B" title="Dourado"></button>
+                <button class="cor" style="--cor: #D875A5" data-cor="#D875A5" title="Rosa"></button>
+                <button class="cor" style="--cor: #9270D6" data-cor="#9270D6" title="Roxo"></button>
+                <button class="cor" style="--cor: #eaeaeb" data-cor="#eaeaeb" title="Branco"></button>
+                <button class="cor" style="--cor: #2a2a2a" data-cor="#2a2a2a" title="Preto"></button>
+            </div>
+            <div class="escolher_fonte">
+                <label for="fonte" id="labelfonte">Escolha a fonte:</label>
+                    <select name="fonte" id="fonte">
+                        <option value="EB Garamond">EB Garamond</option>
+                        <option value="Montserrat">Montserrat</option>
+                        <option value="Playfair Display">Playfair Display</option>
+                        <option value="Cormorant Garamond">Cormorant Garamond</option>
+                        <option value="Lora">Lora</option>
+                        <option value="Libre Baskerville">Libre Baskerville</option>
+                        <option value="Inter">Inter</option>
+                    </select>
+            </div>
+            <div class="corletra">
+                
+                <button class="corfonte" style="--cor: #FFFFFF" data-cor="#FFFFFF" title="Branco"></button>
+                <button class="corfonte" style="--cor: #000000" data-cor="#000000" title="Preto"></button>
+            </div>
+            <div class="escolhaAlinhamento">
+                <button onclick="alinharTexto('left')" class="btn_alinhar"><i data-lucide="align-left"></i>
+                    </button>
+                <button onclick="alinharTexto('center')" class="btn_alinhar"><i data-lucide="align-center"></i>
+                    </button>
+                <button onclick="alinharTexto('right')" class="btn_alinhar"><i data-lucide="align-right"></i>
+                    </button>
+                </div>
+            <div class="tituloCreate">
+                <input type="text" class="header_where" placeholder=" Título(opcional)" maxlength="100" id="inputTitle">
+                <div class="viewCreate">
+                    <button class="btn_viewCreate">Visualizar</button>
+                </div>
+            </div>
+        </footer>
+        </main>
+    </main>
+    <section id="preview">
+
+        <button id="btnVoltar" ><i data-lucide="x"></i></button>
+
+        <div id="areaPreview">
+            <img src="img/guestprofile.png" class="perfilPreview" alt="" maxlength="400">
+            <div class="preview_text" id="preview_text">
+                <h1 id="preview_title"></h1>
+                <p id="preview_quote"></p>
+                <div class="preview_info">
+                    <span id="preview_author"></span>
+                    <span id="preview_where"></span>
+                </div>
+            <img src="img/logoquote.png" class="marca_daguaP" alt="" maxlength="400">
+            <img src="img/logoquote99.png" class="marca_daguaP99" alt="" maxlength="400">
+            <div class="interaction">
+                    <button class="curtir_postPv"><i data-lucide="heart"></i></button>
+
+                    <button class="comentar_postPv"><i data-lucide="message-circle"></i></button>
+
+                    <button class="repost_postPv"><i data-lucide="repeat-2"></i></button>
+
+                    <button class="encaminhar_postPv"><i data-lucide="send"></i></button>
+
+                    <button class="salvar_postPv"><i data-lucide="arrow-big-down"></i></button>
+            </div>
+            </div>
+        </div>
+        
+        <div class='btnpost'>
+            <button class="btn_postar">Postar Quote</button>
+        </div>
+    </section>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        lucide.createIcons();
+       
+        
+
+        
+    </script>
+</body>
+</html>

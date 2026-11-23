@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0f0f0f;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: radial-gradient(
+                circle at center,
+                rgba(217, 119, 6, 0.35),
+                transparent 70%
+            );
+        }
+
+        .main {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .container {
+            width: 380px;
+            background: rgba(15,15,15,0.9);
+            border-radius: 20px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 40px rgba(217, 119, 6, 0.35);
+        }
+
+        .title {
+            font-size: 1.7rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            color: #d4d4d8;
+            font-family: 'EB Garamond', serif;
+        }
+
+        .message_login {
+            text-align: center;
+            color: #a1a1aa;
+            margin-bottom: 0.5rem;
+            font-family: 'EB Garamond', serif;
+        }
+
+        .label_email {
+            color: #d4d4d8;
+            font-size: 0.95rem;
+            font-family: 'EB Garamond', serif;
+        }
+
+        .input_field {
+            width: 100%;
+            height: 40px;
+            border: 1px solid rgba(255,255,255, 0.08);
+            border-radius: 12px;
+            background: #181818;
+            color: white;
+            padding: 0 1rem;
+            font-size: 1rem;
+            transition: 0.2s;
+        }
+
+        .input_field::placeholder {
+            color: #71717a;
+            font-family: 'EB Garamond', serif;
+        }
+
+        .input_field:focus {
+            outline: none;
+            border: 1px solid #d97706;
+            box-shadow: 0 0 15px rgba(217, 119, 6, 0.35);
+        }
+
+        .input_field.error {
+            border: 1px solid #f87171;
+        }
+
+        .error_msg {
+            font-size: 0.78rem;
+            color: #f87171;
+            font-family: 'EB Garamond', serif;
+            margin-top: -0.3rem;
+            display: none;
+        }
+
+        .signup_button {
+            width: 100%;
+            height: 42px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(90deg, #d97706, #fffb00);
+            color: white;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+            margin-top: 0.2rem;
+        }
+
+        .signup_button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(217, 119, 6, 0.35);
+        }
+
+        .message_login_link {
+            text-align: center;
+            color: #a1a1aa;
+            font-family: 'EB Garamond', serif;
+        }
+
+        .login_link {
+            color: #d97706;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .login_link:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <title>Criar Conta — Quote</title>
+</head>
+<body>
+    <main class="main">
+        <div class="container">
+            <h1 class="title">Criar Conta</h1>
+            <p class="message_login">Junte-se à comunidade Quote.</p>
+
+            <label class="label_email">Nome completo</label>
+            <input class="input_field" id="nome" type="text" placeholder="Insira seu nome completo">
+            <span class="error_msg" id="erro_nome">Por favor, insira seu nome.</span>
+
+            <label class="label_email">Username</label>
+            <input class="input_field" id="username" type="text" placeholder="Ex: @murilo_poeta">
+            <span class="error_msg" id="erro_username">Username deve ter ao menos 3 caracteres.</span>
+
+            <label class="label_email">Email</label>
+            <input class="input_field" id="email" type="text" placeholder="Insira seu email">
+            <span class="error_msg" id="erro_email">Insira um email válido com @.</span>
+
+            <label class="label_email">Senha</label>
+            <input class="input_field" id="password" type="password" placeholder="Mínimo 8 caracteres">
+            <span class="error_msg" id="erro_password">A senha deve ter ao menos 8 caracteres.</span>
+
+            <button class="signup_button" onclick="signup()">Criar Conta</button>
+
+            <p class="message_login_link">
+                Já tem uma conta? <a href="index.html" class="login_link">Entrar</a>
+            </p>
+        </div>
+    </main>
+    <script>
+        let nome = document.querySelector('#nome');
+        let username = document.querySelector('#username');
+        let email = document.querySelector('#email');
+        let password = document.querySelector('#password');
+
+
+        function mostrarErro(input, erroId){
+            input.classList.add('error')
+            document.querySelector('#' + erroId).style.display='block'
+        }
+
+        function limparErro(input, erroId){
+            input.classList.remove('error')
+            document.querySelector('#' + erroId).style.display='none'
+        }
+
+        function signup(){
+            const dominios = ['@gmail.com', '@outlook.com', '@hotmail.com', '@yahoo.com', '@icloud.com'];
+            const emailValido = dominios.some(d => email.value.trim().includes(d));
+            let valido = true
+
+            if (nome.value.trim() === ''){
+                mostrarErro(nome, 'erro_nome')
+                valido = false
+            }else{
+                limparErro(nome, 'erro_nome')
+            }
+
+            if (username.value.trim().length < 3){
+                mostrarErro(username, 'erro_username')
+                valido = false
+            }else{
+                limparErro(username, 'erro_username')
+            }
+
+            if (!emailValido){
+                mostrarErro(email, 'erro_email')
+                valido = false
+            }else{
+                limparErro(email, 'erro_email')
+            }
+
+            if (password.value.trim().length < 8){
+                mostrarErro(password, 'erro_password')
+                valido = false
+            }else{
+                limparErro(password, 'erro_password')
+            }
+            
+            if (valido === true){
+                window.location.href='index.html'
+            }
+        }
+    </script>
+</body>
+</html>
